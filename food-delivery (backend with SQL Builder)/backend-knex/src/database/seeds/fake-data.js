@@ -19,7 +19,7 @@ export async function seed(knex) {
     { id: 1, email: 'admin@fooddelivery.com', password: await genPassword() },
     { id: 2, email: 'user@fooddelivery.com', password: await genPassword() },
   ]);
-  await knex('restaurants').del([
+  await knex('restaurants').insert([
     {
       id: 1,
       name: 'Restaurant 1',
@@ -33,37 +33,37 @@ export async function seed(knex) {
       type: 'Fast food',
     },
   ]);
-  await knex('products').del(
+  await knex('products').insert([
     {
       id: 1,
       name: 'Maki',
       price: 10,
       restaurant_id: 1,
-      descriotion: '24 rolls',
+      description: '24 rolls',
     },
     {
       id: 2,
       name: 'Kebab',
       price: 20,
       restaurant_id: 2,
-      descriotion: 'Średni',
+      description: 'Big',
     },
     {
       id: 3,
       name: 'Burger',
       price: 20,
       restaurant_id: 2,
-      descriotion: 'Średni',
+      description: 'Big',
     },
     {
       id: 4,
       name: 'Sushi',
       price: 100,
       restaurant_id: 1,
-      descriotion: '20 rolls',
-    }
-  );
-  await knex('orders').del([
+      description: '20 rolls',
+    },
+  ]);
+  await knex('orders').insert([
     {
       id: 1,
       date: new Date(),
@@ -77,7 +77,7 @@ export async function seed(knex) {
       restaurant_id: 2,
     },
   ]);
-  await knex('order_products').del([
+  await knex('order_products').insert([
     {
       order_id: 1,
       product_id: 1,
@@ -94,7 +94,7 @@ export async function seed(knex) {
       price: 19,
     },
   ]);
-  await knex('deliveries').del([
+  await knex('deliveries').insert([
     {
       delivery_date: new Date(),
       order_id: 2,
